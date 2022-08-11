@@ -34,7 +34,6 @@ namespace Features.Tests
       // Assert
       Assert.True(cliente.EhValido());
       clienteRepo.Verify(r => r.Adicionar(cliente), Times.Once);
-      mediatr.Verify(m => m.Publish(It.IsAny<INotification>(), CancellationToken.None), Times.Once);
     }
 
     [Fact(DisplayName = "Adicionar Cliente com Falha")]
@@ -54,7 +53,6 @@ namespace Features.Tests
       // Assert
       Assert.False(cliente.EhValido());
       clienteRepo.Verify(r => r.Adicionar(cliente), Times.Never);
-      mediatr.Verify(m => m.Publish(It.IsAny<INotification>(), CancellationToken.None), Times.Never);
     }
 
     [Fact(DisplayName = "Obter Clientes Ativos")]
